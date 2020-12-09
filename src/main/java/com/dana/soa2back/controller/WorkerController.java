@@ -12,7 +12,6 @@ import javax.validation.Valid;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 @RestController
 @RequestMapping("workers")
 public class WorkerController {
@@ -31,11 +30,6 @@ public class WorkerController {
         return RESPONSE_START
                 + workerManager.findById(id).orElseThrow(() -> new WorkerNotFoundException(id)).toString()
                 + RESPONSE_END;
-    }
-
-    @GetMapping(value="test/{id}", produces=MediaType.APPLICATION_XML_VALUE)
-    Worker test(@PathVariable Long id) {
-        return workerManager.findById(id).orElseThrow(() -> new WorkerNotFoundException(id));
     }
 
     @GetMapping(value="/max-salary",

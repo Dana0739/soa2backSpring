@@ -23,7 +23,7 @@ public interface WorkerRepository extends JpaRepository<Worker, Long> {
 
     Optional<Worker> findTopByOrderBySalary();
 
-    List<Worker> findAllBySalary(Double salary);
+    int countAllBySalary(Double salary);
 
     List<Worker> findAllByNameStartsWith(String prefix);
 }

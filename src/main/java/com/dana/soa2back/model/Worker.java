@@ -161,12 +161,12 @@ public class Worker {
     public String toString() {
         return "<worker>" +
                 "<id>" + this.id + "</id>" +
-                "<name>" + ((this.name == null) ? "" : this.name) + "</name>" +
-                "<coordinateX>" + ((this.coordinates == null) ? "" : this.coordinates.getX()) + "</coordinateX>" +
-                "<coordinateY>" + ((this.coordinates == null) ? "" : this.coordinates.getY()) + "</coordinateY>" +
-                "<creationDate>" + ((this.creationDate == null) ? "" : this.creationDate) + "</creationDate>" +
+                "<name>" + this.name + "</name>" +
+                "<coordinateX>" + this.coordinates.getX() + "</coordinateX>" +
+                "<coordinateY>" + this.coordinates.getY() + "</coordinateY>" +
+                "<creationDate>" + this.creationDate + "</creationDate>" +
                 "<salary>" + ((this.salary == null) ? "" : this.salary) + "</salary>" +
-                "<endDate>" + ((this.startDate == null) ? "" : this.startDate) + "</endDate>" +
+                "<startDate>" + ((this.startDate == null) ? "" : this.startDate) + "</startDate>" +
                 "<endDate>" + ((this.endDate == null) ? "" : this.endDate) + "</endDate>" +
                 "<position>" + ((this.position == null) ? "" : this.position.getTitle()) + "</position>" +
                 "<status>" + ((this.status == null) ? "" : this.status.getTitle()) + "</status>" +

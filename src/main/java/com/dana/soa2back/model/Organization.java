@@ -41,7 +41,22 @@ public class Organization {
     }
 
     public Organization() {
+    }
 
+    public long getId() {
+        return id;
+    }
+
+    public OrganizationType getType() {
+        return type;
+    }
+
+    public Integer getAnnualTurnover() {
+        return annualTurnover;
+    }
+
+    public int getEmployeesCount() {
+        return employeesCount;
     }
 
     public Organization setAnnualTurnover(Integer annualTurnover) {
@@ -81,5 +96,15 @@ public class Organization {
     @Override
     public int hashCode() {
         return Objects.hash(this.annualTurnover, this.employeesCount, this.type);
+    }
+
+    @Override
+    public String toString() {
+        return "<organization>" +
+                "<id>" + this.id + "</id>" +
+                "<annualTurnover>" + this.getAnnualTurnover() + "</annualTurnover>" +
+                "<employeesCount>" + this.getEmployeesCount() + "</employeesCount>" +
+                "<organizationType>" + this.getType().getTitle() + "</organizationType>" +
+                "</organization>";
     }
 }

@@ -47,7 +47,7 @@ public class WorkerManager {
     }
 
     public int getWorkersCountWithEqualSalary(Double salary) {
-        return workerRepository.findAllBySalary(salary).size();
+        return workerRepository.countAllBySalary(salary);
     }
 
     public List<Worker> getWorkersWithNameStartsWithPrefix(String prefix) {
