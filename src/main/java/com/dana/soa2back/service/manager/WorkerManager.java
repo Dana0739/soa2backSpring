@@ -1,6 +1,6 @@
 package com.dana.soa2back.service.manager;
 
-import com.dana.soa2back.model.DTO.EditWorkerWorkDTO;
+import com.dana.soa2back.model.DTO.HRHireFireWorkerDTO;
 import com.dana.soa2back.model.OrganizationType;
 import com.dana.soa2back.model.Position;
 import com.dana.soa2back.model.Status;
@@ -66,13 +66,17 @@ public class WorkerManager {
         return organizationRepository.existsById(id);
     }
 
-    public Worker editWorker(EditWorkerWorkDTO editWorkerWorkDTO, Long id) {
+    public Worker editWorker(HRHireFireWorkerDTO hrHireFireWorkerDTO, long id) {
         Worker worker = workerRepository.findById(id).get();
-        worker.setOrganization(organizationRepository.findById(editWorkerWorkDTO.getOrganizationId()).get());
-        worker.setPosition(editWorkerWorkDTO.getPosition());
-        worker.setStatus(editWorkerWorkDTO.getStatus());
-        worker.setStartDate(editWorkerWorkDTO.getStartDate());
-        worker.setEndDate(editWorkerWorkDTO.getEndDate());
+        if (hrHireFireWorkerDTO.getOrganizationId() != null)
+            worker.setOrganization(organizationRepository.findById(hrHireFireWorkerDTO.getOrganizationId()).get());
+        if (hrHireFireWorkerDTO.getPosition() != null)
+            worker.setPosition(hrHireFireWorkerDTO.getPosition());
+        if (hrHireFireWorkerDTO.getStatus() != null)
+            worker.setStatus(hrHireFireWorkerDTO.getStatus());
+        if (hrHireFireWorkerDTO.getStartDate() != null)
+            worker.setStartDate(hrHireFireWorkerDTO.getStartDate());
+        worker.setEndDate(hrHireFireWorkerDTO.getEndDate());
         return workerRepository.save(worker);
     }
 

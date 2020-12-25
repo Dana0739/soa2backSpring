@@ -1,7 +1,7 @@
 package com.dana.soa2back.controller;
 
 import com.dana.soa2back.controller.exception.*;
-import com.dana.soa2back.model.DTO.EditWorkerWorkDTO;
+import com.dana.soa2back.model.DTO.HRHireFireWorkerDTO;
 import com.dana.soa2back.model.Worker;
 import com.dana.soa2back.service.manager.WorkerManager;
 import com.dana.soa2back.service.manager.WorkerValidator;
@@ -87,16 +87,16 @@ public class WorkerController {
                 + RESPONSE_END;
     }
 
-    @PatchMapping(value="/{id}",
+    @PostMapping(value="/{id}",
             produces=MediaType.APPLICATION_XML_VALUE,
             consumes=MediaType.APPLICATION_XML_VALUE)
-    String editWorker(@RequestBody EditWorkerWorkDTO editWorkerWorkDTO, @PathVariable Long id) {
+    String editWorker(@RequestBody HRHireFireWorkerDTO hrHireFireWorkerDTO, @PathVariable long id) {
         if (!workerManager.workerExistsById(id)) throw new WorkerNotFoundException(id);
-        if (editWorkerWorkDTO.getOrganizationId() != null
-                && !workerManager.organizationExistsById(editWorkerWorkDTO.getOrganizationId()))
-            throw new OrganizationNotFoundException(editWorkerWorkDTO.getOrganizationId());
+        if (hrHireFireWorkerDTO.getOrganizationId() != null
+                && !workerManager.organizationExistsById(hrHireFireWorkerDTO.getOrganizationId()))
+            throw new OrganizationNotFoundException(hrHireFireWorkerDTO.getOrganizationId());
         return RESPONSE_START
-                + workerManager.editWorker(editWorkerWorkDTO, id).toString()
+                + workerManager.editWorker(hrHireFireWorkerDTO, id).toString()
                 + RESPONSE_END;
     }
 
