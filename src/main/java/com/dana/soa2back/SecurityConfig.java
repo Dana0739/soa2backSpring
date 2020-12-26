@@ -17,10 +17,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.cors()
+                .and()
+                .authorizeRequests()
                 .anyRequest()
-                .anonymous();
-        http.requiresChannel()
+                .anonymous()
+                .and()
+                .csrf().ignoringAntMatchers("/nocsrf","/**")
+                .and()
+                .requiresChannel()
                 .anyRequest()
                 .requiresSecure();
     }

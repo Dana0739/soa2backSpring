@@ -137,9 +137,9 @@ public class WorkerManager {
                 workers.removeIf(worker -> worker.getCoordinates().getY() !=
                         Double.parseDouble(filterValues.get(filterFields.indexOf("coordinateY"))));
             }
-            if (filterFields.contains("creationDate")) { //todo check with front end .replace(" ", "+")
+            if (filterFields.contains("creationDate")) {
                 workers.removeIf(worker -> worker.getCreationDate() !=
-                        ZonedDateTime.parse(filterValues.get(filterFields.indexOf("creationDate"))));
+                        ZonedDateTime.parse(filterValues.get(filterFields.indexOf("creationDate")).replace(" ", "+")));
             }
             if (filterFields.contains("salary")) {
                 workers.removeIf(worker ->
@@ -149,7 +149,7 @@ public class WorkerManager {
             }
             if (filterFields.contains("startDate")) {
                 workers.removeIf(w -> {
-                    try { //todo check with front end
+                    try {
                         return filterValues.get(filterFields.indexOf("startDate")).equals("null") ?
                                 w.getStartDate() != null :
                                 w.getStartDate() != new SimpleDateFormat("dd-MM-yyyy")
@@ -162,7 +162,7 @@ public class WorkerManager {
             }
             if (filterFields.contains("endDate")) {
                 workers.removeIf(w -> {
-                    try { //todo check with front end
+                    try {
                         return filterValues.get(filterFields.indexOf("endDate")).equals("null") ?
                                 w.getEndDate() != null :
                                 w.getEndDate() != new SimpleDateFormat("dd-MM-yyyy")

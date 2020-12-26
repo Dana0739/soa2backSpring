@@ -70,9 +70,10 @@ public class WorkerController {
         if (!WorkerValidator.checkParametersForFilterSort(pageSize, pageNumber, filterFields, filterValues, sortFields))
             throw new IllegalWorkerFilterSortPagingArgumentsException();
         List<Worker> workers = workerManager.getAllWorkers(filterFields, filterValues, sortFields);
+        workers = workerManager.pageWorkersList(workers, pageNumber, pageSize);
+        if (workers.isEmpty()) throw new WorkersNotFoundException();
         return RESPONSE_START
-                + workerManager.pageWorkersList(workers, pageNumber, pageSize)
-                .stream().map(Worker::toString).collect(Collectors.joining())
+                + workers.stream().map(Worker::toString).collect(Collectors.joining())
                 + RESPONSE_END;
     }
 

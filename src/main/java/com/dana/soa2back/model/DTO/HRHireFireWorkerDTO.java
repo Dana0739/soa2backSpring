@@ -17,9 +17,9 @@ public class HRHireFireWorkerDTO {
     @XmlElement
     Long organizationId;
     @XmlElement
-    Position position; // todo check null
+    Position position;
     @XmlElement
-    Status status; // todo check null
+    Status status;
     @XmlElement
     Date startDate;
     @XmlElement

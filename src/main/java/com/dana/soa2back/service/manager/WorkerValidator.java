@@ -70,13 +70,13 @@ public class WorkerValidator {
                         if (filterFields.get(i).equals("salary") && dnumber <= 0) return false;
                         break;
                     case "startDate":
-                    case "endDate"://todo check with front end
+                    case "endDate":
                         if (filterValues.get(i).equals("null")) break;
                         new SimpleDateFormat("dd-MM-yyyy").parse(filterValues.get(i));
-                        break; //todo check with front end
+                        break;
                     case "creationDate":
                         ZonedDateTime.parse(filterValues.get(i).replace(" ", "+"));
-                        break; //todo check with front end .replace(" ", "+")
+                        break;
                     case "name":
                         break;
                     default:
