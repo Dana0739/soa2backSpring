@@ -96,8 +96,10 @@ public class WorkerController {
         if (hrHireFireWorkerDTO.getOrganizationId() != null
                 && !workerManager.organizationExistsById(hrHireFireWorkerDTO.getOrganizationId()))
             throw new OrganizationNotFoundException(hrHireFireWorkerDTO.getOrganizationId());
-        if (hrHireFireWorkerDTO.getOrganizationId() == null
-                && workerManager.findById(id).get().getOrganization() == null)
+        Worker worker = workerManager.findById(id).get();
+        if (hrHireFireWorkerDTO.getOrganizationId() == null // fire case
+                && (worker.getOrganization() == null  // unemployed
+                    || (worker.getOrganization() != null && worker.getEndDate() != null))) // already fired
             throw new OrganizationFailedDependencyException();
         return RESPONSE_START
                 + workerManager.editWorker(hrHireFireWorkerDTO, id).toString()
