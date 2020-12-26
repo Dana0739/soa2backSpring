@@ -96,6 +96,9 @@ public class WorkerController {
         if (hrHireFireWorkerDTO.getOrganizationId() != null
                 && !workerManager.organizationExistsById(hrHireFireWorkerDTO.getOrganizationId()))
             throw new OrganizationNotFoundException(hrHireFireWorkerDTO.getOrganizationId());
+        if (hrHireFireWorkerDTO.getOrganizationId() == null
+                && workerManager.findById(id).get().getOrganization() == null)
+            throw new OrganizationFailedDependencyException();
         return RESPONSE_START
                 + workerManager.editWorker(hrHireFireWorkerDTO, id).toString()
                 + RESPONSE_END;

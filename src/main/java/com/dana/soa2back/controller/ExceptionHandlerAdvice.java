@@ -64,4 +64,11 @@ public class ExceptionHandlerAdvice {
     String organizationNotValidExceptionHandler(OrganizationNotValidException ex) {
         return ex.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(OrganizationFailedDependencyException.class)
+    @ResponseStatus(HttpStatus.FAILED_DEPENDENCY)
+    String organizationFailedDependencyExceptionHandler(OrganizationFailedDependencyException ex) {
+        return ex.getMessage();
+    }
 }
